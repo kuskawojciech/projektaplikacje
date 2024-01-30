@@ -1,0 +1,40 @@
+1. Administrator
+
+ID: 0
+Login: admin
+Hasło: 
+
+
+2. Marek Marecki
+
+ID: 1
+Login: mmarecki
+Hasło: 
+
+
+3. Jan Janecki
+
+ID: 2
+Login: jjanecki
+Hasło: 
+
+
+4. Piotr Piotrowski
+
+ID: 6
+Login: ppiotrowski
+Hasło: 
+
+
+5. Janusz Januszewski
+
+ID: 7
+Login: jjanuszewski
+Hasło: 
+
+
+6. Adam Adamczak
+
+ID: 8
+Login: aadamczak
+Hasło: 

@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista użytkowników - Zarządzanie Urlopami</title>
+    <title>Lista użytkowników - Zarządzanie przedsiębiorstwem</title>
     <link rel="stylesheet" href="./style/css/bootstrap.css">
     <link rel="stylesheet" href="./style/css/style.css">
     <script 
@@ -36,7 +36,7 @@
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6" style="padding-top: 50px; width: 100%;">
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5">Użytkownicy</h2>
+                                <h2 class="text-uppercase text-center mb-5">Użytkownicy w systemie</h2>
                                 <div class="d-flex justify-content-center">
                                     <a href="./register.php" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Dodaj użytkownika</a>
                                 </div>

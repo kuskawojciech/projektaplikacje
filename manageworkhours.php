@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!(($_SESSION['login']['isLogged']==1)&&($_SESSION['login']['roleID']==2))){
+    if(!(($_SESSION['login']['isLogged']==1)&&($_SESSION['login']['roleID']==1))){
         header('Location:./index.php');
         exit();
     }
@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menadżer urlopów - Zarządzanie przedsiębiorstwem</title>
+    <title>Godziny pracowników - Zarządzanie przedsiębiorstwem</title>
     <link rel="stylesheet" href="./style/css/bootstrap.css">
     <link rel="stylesheet" href="./style/css/style.css">
     <script 
@@ -25,7 +25,7 @@
 </head>
 <body>
 <?php
-        require_once('./view/view_manager/navbar.php');
+        require_once('./view/view_admin/navbar.php');
 ?>
 <div class="container">
     <div class="mask d-flex align-items-center h-100">
@@ -34,30 +34,28 @@
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6" style="padding-top: 50px; width: 100%;">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Zarządzanie urlopami</h2>
+                            <h2 class="text-uppercase text-center mb-5">Zarządzanie godzinami pracy</h2>
 
                             <?php
-                            $fetchVacation=$con->prepare('SELECT vacation.id as vacationid, vacation.start_date, vacation.end_date, vacation.created_at, user.id as user_id, concat(user.name," ",user.surname) as username, vacation.is_accepted, vacation.message FROM vacation JOIN user on vacation.user_id=user.id WHERE user.manager_id = :uid order by vacation.id asc');
-                            $fetchVacation->bindParam('uid',$uid,PDO::PARAM_INT);
-                            $fetchVacation->execute();
-                            $vacations=$fetchVacation->fetchAll(PDO::FETCH_ASSOC);
-                            $rowCount=$fetchVacation->rowCount();
+                            $fetchworkhours=$con->prepare('SELECT workhours.id as workhoursid, workhours.start_time, workhours.end_time, workhours.created_at, user.id as user_id, concat(user.name," ",user.surname) as username, workhours.is_accepted FROM workhours JOIN user on workhours.user_id=user.id order by workhours.id asc');
+                            $fetchworkhours->execute();
+                            $workhours=$fetchworkhours->fetchAll(PDO::FETCH_ASSOC);
+                            $rowCount=$fetchworkhours->rowCount();
                             echo '<table class="table table-bordered">';
-                            echo '<tr> <th>Lp.</th> <th>Imie i nazwisko</th> <th>Data początku</th> <th>Data końca</th> <th>Data utworzenia</th> <th>Notatka</th> <th>Akceptacja</th></tr>';
+                            echo '<tr> <th>Lp.</th> <th>Imie i nazwisko</th> <th>Data początku</th> <th>Data końca</th> <th>Data utworzenia</th> <th>Akceptacja</th></tr>';
                             for($i=($rowCount-1); $i>=0; $i--){
                                 $lp=$i+1;
                                 echo '<tr>';
                                 echo '<td>'.$lp.'</td>';
-                                echo '<td>'.$vacations[$i]['username'].'</td>';
-                                echo '<td>'.$vacations[$i]['start_date'].'</td>';
-                                echo '<td>'.$vacations[$i]['end_date'].'</td>';
-                                echo '<td>'.$vacations[$i]['created_at'].'</td>';
-                                echo '<td>'.$vacations[$i]['message'].'</td>';
-                                //echo '<td>'.$vacations[$i]['is_accepted'].'</td>';
-                                if($vacations[$i]['is_accepted']==1){
+                                echo '<td>'.$workhours[$i]['username'].'</td>';
+                                echo '<td>'.$workhours[$i]['start_time'].'</td>';
+                                echo '<td>'.$workhours[$i]['end_time'].'</td>';
+                                echo '<td>'.$workhours[$i]['created_at'].'</td>';
+                                //echo '<td>'.$workhourss[$i]['is_accepted'].'</td>';
+                                if($workhours[$i]['is_accepted']==1){
                                     echo '<td><a style="color:green;">Zaakceptowany</a></td>';
                                 }else{
-                                    echo '<td><a href="./scripts/vacationaccept.php?vacation_id='.$vacations[$i]['vacationid'].'">Zaakceptuj</a></td>';
+                                    echo '<td><a href="./scripts/workhoursaccept.php?workhours_id='.$workhours[$i]['workhoursid'].'">Zaakceptuj</a></td>';
                                 }
                                 echo '</tr>';
                             }

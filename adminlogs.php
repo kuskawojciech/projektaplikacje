@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logi - Zarządzanie Urlopami</title>
+    <title>Logi - Zarządzanie przedsiębiorstwem</title>
     <link rel="stylesheet" href="./style/css/bootstrap.css">
     <link rel="stylesheet" href="./style/css/style.css">
     <script 
@@ -46,7 +46,7 @@
                                 
                                 echo '<table class="table table-bordered">';
                                 echo '<tr> <th> Lp. </th> <th> Użytkownik </th> <th> IP </th> <th> Typ akcji </th> <th> Utworzono </th> <th> Who </th> </tr>';
-                                for($i=0; $i<=($rowCount-1); $i++){
+                                for($i=($rowCount-1); $i>=0; $i--){
                                     $lp=$i+1;
                                     echo '<tr>';
                                     echo '<td>'.$lp.'</td>';
